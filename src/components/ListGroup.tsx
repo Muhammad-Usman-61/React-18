@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 let items = ["Multan", "Sialkot", "Vehari", "Islamabd"];
-
+items = [];
 // Event handler
 const EventHandler = (event: MouseEvent) => {
   console.log("Clicked on", event, "at index", event);
