@@ -24,7 +24,7 @@ function ListGroup() {
           ))}
         </ul>
       ) : (
-        <p>No items to display</p>
+        <p>Add new item</p>
       )}
     </>
   );
