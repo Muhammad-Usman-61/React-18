@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
-let items = ["Profile", "Settings", "Messages", "Download"];
+let items = ["Multan", "Sialkot", "Vehari", "Islamabd"];
 
 // Event handler
 const EventHandler = (event: MouseEvent) => {
