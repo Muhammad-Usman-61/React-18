@@ -1,12 +1,14 @@
 import { useState } from "react";
-
-function ListGroup() {
-  let items = ["Multan", "Sialkot", "Vehari", "Islamabd"];
+interface Props {
+  items: string[];
+  heading: string;
+}
+function ListGroup({ items, heading }: Props) {
   const [selectedItem, setSelectedItem] = useState(-1);
 
   return (
     <>
-      <h1>New list</h1>
+      <h1>{heading}</h1>
 
       {items.length > 0 ? (
         <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg ">
