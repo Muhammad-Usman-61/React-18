@@ -2,7 +2,7 @@ import { useState } from "react";
 interface Props {
   items: string[];
   heading: string;
-  onSelection: (item: string) => void;
+  onSelection: (item: string, index: number) => void;
 }
 function ListGroup({ items, heading, onSelection }: Props) {
   const [selectedItem, setSelectedItem] = useState(0);
@@ -23,7 +23,7 @@ function ListGroup({ items, heading, onSelection }: Props) {
               }
               onClick={() => {
                 setSelectedItem(index);
-                onSelection(item);
+                onSelection(item, index);
               }}
             >
               {item}

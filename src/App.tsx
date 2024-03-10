@@ -6,7 +6,7 @@ function App() {
       <ListGroup
         items={["Multan", "Sialkot", "Vehari", "Islamabd", "Karachi"]}
         heading="Cities of Pakistan"
-        onSelection={(item) => console.log(item)}
+        onSelection={(item, index) => console.log(item, index)}
       />
     </div>
   );
