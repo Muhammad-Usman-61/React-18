@@ -4,7 +4,7 @@ interface Props {
   heading: string;
 }
 function ListGroup({ items, heading }: Props) {
-  const [selectedItem, setSelectedItem] = useState(-1);
+  const [selectedItem, setSelectedItem] = useState(0);
 
   return (
     <>
@@ -17,8 +17,8 @@ function ListGroup({ items, heading }: Props) {
               key={item}
               className={
                 selectedItem === index
-                  ? "w-full px-4 py-2 rounded-b-lg bg-gray-700 text-white"
-                  : "w-full px-4 py-2 rounded-b-lg"
+                  ? "w-full px-4 py-2 rounded bg-gray-700 text-white"
+                  : "w-full px-4 py-2 rounded"
               }
               onClick={() => setSelectedItem(index)}
             >
