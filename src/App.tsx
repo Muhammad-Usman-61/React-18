@@ -18,6 +18,13 @@ function App() {
         text="Deafault"
         color="text-white"
         backgroundColor="bg-blue-700"
+        onHoverBackgroundColor="bg-blue-800"
+      />
+      <Button
+        text="Deafault"
+        color="text-white"
+        backgroundColor="bg-gray-800"
+        onHoverBackgroundColor="bg-gray-900"
       />
     </div>
   );
