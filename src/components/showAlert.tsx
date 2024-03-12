@@ -8,11 +8,7 @@ function showAlert() {
     <div>
       {alertVisible && (
         <Alert onClose={() => setAlert(false)}>
-          A simple info alert with an{" "}
-          <a href="#" className="font-semibold underline hover:no-underline">
-            example link
-          </a>
-          . Give it a click if you like.
+          A simple info alert. You can close it.
         </Alert>
       )}
       <Button
