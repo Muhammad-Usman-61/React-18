@@ -9,6 +9,10 @@ function App() {
         heading="Cities of Pakistan"
         onSelection={(item, index) => console.log(item, index)}
       /> */}
+      <Alert>
+        <span className="font-medium">Danger alert!</span>
+        Stay Alert
+      </Alert>
     </div>
   );
 }
