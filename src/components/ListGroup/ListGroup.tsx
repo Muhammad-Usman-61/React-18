@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./ListGroup.module.css";
+import { FaCity } from "react-icons/fa";
 interface Props {
   items: string[];
   heading: string;
@@ -10,7 +11,10 @@ function ListGroup({ items, heading, onSelection }: Props) {
 
   return (
     <>
-      <h1>{heading}</h1>
+      <div className="flex items-center gap-2">
+        <FaCity color="#444" size="20" />
+        <h1>{heading}</h1>
+      </div>
 
       {items.length > 0 ? (
         <ul
