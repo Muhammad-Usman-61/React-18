@@ -16,7 +16,7 @@ function Button({
     <button
       type="button"
       onClick={onClick}
-      className={`${color} ${backgroundColor} hover:${onHoverBackgroundColor} font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2`}
+      className={`${color} ${backgroundColor} hover:${onHoverBackgroundColor} font-medium rounded-lg text-sm px-5 py-2.5`}
     >
       {text}
     </button>

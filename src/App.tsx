@@ -3,14 +3,19 @@ import ListGroup from "./components/ListGroup/ListGroup";
 // import Button from "./components/Button";
 import ShowAlert from "./components/showAlert";
 import LikeButton from "./components/LikeButton";
+import UpdateObjects from "./components/UpdateObjects";
 function App() {
   return (
     <div>
       <ListGroup
         items={["Multan", "Sialkot", "Vehari", "Islamabad", "Karachi"]}
         heading="Cities of Pakistan"
-        onSelection={(item, index) => console.log()}
       />
+      {/* <ListGroup
+        items={["Multan", "Sialkot", "Vehari", "Islamabad", "Karachi"]}
+        heading="Cities of Pakistan"
+        onSelection={(item, index) => console.log(item, index)}
+      /> */}
       {/* <Alert>
         A simple info alert with an{" "}
         <a href="#" className="font-semibold underline hover:no-underline">
@@ -34,6 +39,7 @@ function App() {
       /> */}
       <ShowAlert />
       <LikeButton />
+      <UpdateObjects />
     </div>
   );
 }

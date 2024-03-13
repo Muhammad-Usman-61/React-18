@@ -5,7 +5,7 @@ import LikeButton from "../LikeButton";
 interface Props {
   items: string[];
   heading: string;
-  onSelection: (item: string, index: number) => void;
+  onSelection?: (item: string, index: number) => void;
 }
 function ListGroup({ items, heading, onSelection }: Props) {
   const [selectedItem, setSelectedItem] = useState(0);
@@ -34,7 +34,9 @@ function ListGroup({ items, heading, onSelection }: Props) {
               }
               onClick={() => {
                 setSelectedItem(index);
-                onSelection(item, index);
+                if (onSelection) {
+                  onSelection(item, index);
+                }
               }}
             >
               {item} <LikeButton name={item} />
