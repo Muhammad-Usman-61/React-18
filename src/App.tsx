@@ -7,9 +7,9 @@ function App() {
   return (
     <div>
       <ListGroup
-        items={["Multan", "Sialkot", "Vehari", "Islamabd", "Karachi"]}
+        items={["Multan", "Sialkot", "Vehari", "Islamabad", "Karachi"]}
         heading="Cities of Pakistan"
-        onSelection={(item, index) => console.log(item, index)}
+        onSelection={(item, index) => console.log()}
       />
       {/* <Alert>
         A simple info alert with an{" "}
@@ -33,7 +33,7 @@ function App() {
         onClick={() => console.log("2nd Button clicked")}
       /> */}
       <ShowAlert />
-      <LikeButton onClick={() => console.log("Liked")} />
+      <LikeButton />
     </div>
   );
 }

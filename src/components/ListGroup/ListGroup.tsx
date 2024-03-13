@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./ListGroup.module.css";
 import { FaCity } from "react-icons/fa";
+import LikeButton from "../LikeButton";
 interface Props {
   items: string[];
   heading: string;
@@ -28,15 +29,15 @@ function ListGroup({ items, heading, onSelection }: Props) {
               key={item}
               className={
                 selectedItem === index
-                  ? "w-full px-4 py-2 rounded cursor-pointer bg-gray-700 text-white"
-                  : "w-full px-4 py-2 cursor-pointer rounded"
+                  ? "w-full px-4 py-2 rounded cursor-pointer bg-gray-700 text-white flex justify-between items-center"
+                  : "w-full px-4 py-2 rounded cursor-pointer flex justify-between items-center"
               }
               onClick={() => {
                 setSelectedItem(index);
                 onSelection(item, index);
               }}
             >
-              {item}
+              {item} <LikeButton name={item} />
             </li>
           ))}
         </ul>
