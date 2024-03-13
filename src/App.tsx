@@ -2,6 +2,7 @@ import ListGroup from "./components/ListGroup/ListGroup";
 // import Alert from "./components/Alert";
 // import Button from "./components/Button";
 import ShowAlert from "./components/showAlert";
+import LikeButton from "./components/LikeButton";
 function App() {
   return (
     <div>
@@ -32,6 +33,7 @@ function App() {
         onClick={() => console.log("2nd Button clicked")}
       /> */}
       <ShowAlert />
+      <LikeButton onClick={() => console.log("Liked")} />
     </div>
   );
 }
