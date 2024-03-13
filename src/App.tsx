@@ -1,15 +1,15 @@
-// import ListGroup from "./components/ListGroup";
+import ListGroup from "./components/ListGroup/ListGroup";
 // import Alert from "./components/Alert";
 // import Button from "./components/Button";
 import ShowAlert from "./components/showAlert";
 function App() {
   return (
     <div>
-      {/* <ListGroup
+      <ListGroup
         items={["Multan", "Sialkot", "Vehari", "Islamabd", "Karachi"]}
         heading="Cities of Pakistan"
         onSelection={(item, index) => console.log(item, index)}
-      /> */}
+      />
       {/* <Alert>
         A simple info alert with an{" "}
         <a href="#" className="font-semibold underline hover:no-underline">
