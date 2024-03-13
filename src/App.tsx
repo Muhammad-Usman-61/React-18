@@ -39,7 +39,7 @@ function App() {
       /> */}
       <ShowAlert />
       <LikeButton />
-      <UpdateObjects />
+      <UpdateObjects name="Usman" age={23} updatedName="Ali" />
     </div>
   );
 }

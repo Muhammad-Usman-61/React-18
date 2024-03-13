@@ -1,13 +1,18 @@
 import Button from "./Button";
 import { useState } from "react";
-function UpdateObjects() {
+interface Props {
+  name: string;
+  age: number;
+  updatedName: string;
+}
+function UpdateObjects({ name, age, updatedName }: Props) {
   const [objects, setObjects] = useState({
-    name: "John",
-    age: 25,
+    name: name,
+    age: age,
   });
 
   const updateName = () => {
-    setObjects({ ...objects, name: "Jane" });
+    setObjects({ ...objects, name: updatedName });
   };
   return (
     <div className="flex gap-4 items-center mt-4 py-4 border-solid border-grey border-y-2">
