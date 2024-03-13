@@ -15,9 +15,9 @@ function LikeButton({ onClick, name = "Item" }: Props) {
     liked ? console.log(name, "Liked") : console.log(name, "Disliked");
   };
   return liked ? (
-    <AiOutlineHeart size={18} onClick={toggle} />
+    <AiOutlineHeart size={18} onClick={toggle} cursor={"pointer"} />
   ) : (
-    <AiFillHeart color="red" size={18} onClick={toggle} />
+    <AiFillHeart color="red" size={18} onClick={toggle} cursor={"pointer"} />
   );
 }
 
