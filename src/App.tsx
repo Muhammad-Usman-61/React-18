@@ -4,6 +4,7 @@ import ListGroup from "./components/ListGroup/ListGroup";
 import ShowAlert from "./components/showAlert";
 import LikeButton from "./components/LikeButton";
 import UpdateObjects from "./components/UpdateObjects";
+import UpdateArrays from "./components/UpdateArrays";
 function App() {
   return (
     <div>
@@ -40,6 +41,7 @@ function App() {
       <ShowAlert />
       <LikeButton />
       <UpdateObjects name="Usman" age={23} updatedName="Ali" />
+      <UpdateArrays />
     </div>
   );
 }
