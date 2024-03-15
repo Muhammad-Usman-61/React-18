@@ -23,7 +23,7 @@ function UpdateArrays() {
     setTags(tags.filter((t) => t !== tag));
   };
   return (
-    <div className="flex gap-4 items-center p-4 max-w-96 shadow-md my-4 bg-white rounded-lg">
+    <div className="flex gap-4 items-center p-4 max-w-96 border rounded-lg my-4 text-gray-900 bg-white border-[#ccc]">
       <div className="flex flex-col gap-2">
         <h1 className="text-lg font-semibold">Add Your Interests</h1>
         <div className="flex gap-2 justify-between">
@@ -41,19 +41,19 @@ function UpdateArrays() {
             onClick={handleClick}
           />
         </div>
-        <div className="flex gap-2 flex-wrap">
+        <ul className="flex gap-2 flex-wrap">
           {tags.map((tag, index) => (
-            <span
+            <li
               key={index}
-              className="flex text-sm gap-2 items-center w-fit bg-blue-700 text-white p-2 rounded cursor-pointer hover:shadow-md hover:shadow-gray-400"
+              className="flex text-sm gap-2 items-center w-fit bg-gray-700 text-white p-2 rounded cursor-pointer hover:shadow-md hover:shadow-gray-400"
             >
               {tag}{" "}
               <span onClick={() => removeTag(tag)}>
                 <IoClose />
               </span>
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );
