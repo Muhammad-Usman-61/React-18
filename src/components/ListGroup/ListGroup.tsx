@@ -29,8 +29,8 @@ function ListGroup({ items, heading, onSelection }: Props) {
               key={item}
               className={
                 selectedItem === index
-                  ? "w-full px-4 py-2 rounded cursor-pointer bg-gray-700 text-white flex justify-between items-center"
-                  : "w-full px-4 py-2 rounded cursor-pointer flex justify-between items-center"
+                  ? "w-full px-4 py-2 select-none rounded cursor-pointer bg-gray-700 text-white flex justify-between items-center"
+                  : "w-full px-4 py-2 select-none rounded cursor-pointer flex justify-between items-center"
               }
               onClick={() => {
                 setSelectedItem(index);
