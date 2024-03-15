@@ -1,23 +1,29 @@
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
 interface Props {
-  onClick?: (type: string) => void;
+  onClick?: (type: any) => void;
   name?: string;
 }
 
 function LikeButton({ onClick, name = "Item" }: Props) {
   const [liked, setLiked] = useState(false);
-  const toggle = () => {
+  const toggle = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     setLiked(!liked);
     if (onClick) {
-      onClick("hi there!");
+      onClick({});
     }
     liked ? console.log(name, "Liked") : console.log(name, "Disliked");
+    e.stopPropagation();
   };
   return liked ? (
-    <AiFillHeart color="red" size={18} onClick={toggle} cursor={"pointer"} />
+    <AiFillHeart
+      color="red"
+      size={18}
+      onClick={(e) => toggle(e)}
+      cursor={"pointer"}
+    />
   ) : (
-    <AiOutlineHeart size={18} onClick={toggle} cursor={"pointer"} />
+    <AiOutlineHeart size={18} onClick={(e) => toggle(e)} cursor={"pointer"} />
   );
 }
 
