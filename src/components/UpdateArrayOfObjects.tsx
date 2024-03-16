@@ -14,7 +14,17 @@ function UpdateArrayOfObjects() {
     // ]);
 
     //Remove
-    setArrayOfObjects([...arrayOfObjects.slice(0, -1)]);
+    //setArrayOfObjects([...arrayOfObjects.slice(0, -1)]);
+
+    //Filter
+    //setArrayOfObjects([...arrayOfObjects.filter((item) => item.id !== 2)]);
+
+    //Update
+    setArrayOfObjects([
+      ...arrayOfObjects.map((item) =>
+        item.id === 1 ? { ...item, name: "ReactJS" } : item
+      ),
+    ]);
   };
   return (
     <div>
