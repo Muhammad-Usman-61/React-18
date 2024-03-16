@@ -1,10 +1,11 @@
 import Button from "./Button";
 import { useState } from "react";
+import { produce } from "immer";
 function UpdateArrayOfObjects() {
   const [arrayOfObjects, setArrayOfObjects] = useState([
-    { id: 1, name: "React" },
-    { id: 2, name: "TypeScript" },
-    { id: 3, name: "TailwindCSS" },
+    { id: 1, name: "React", applicationStatus: "Active" },
+    { id: 2, name: "TypeScript", applicationStatus: "Active" },
+    { id: 3, name: "TailwindCSS", applicationStatus: "Not Active" },
   ]);
 
   const handleClick = () => {
@@ -20,11 +21,23 @@ function UpdateArrayOfObjects() {
     //setArrayOfObjects([...arrayOfObjects.filter((item) => item.id !== 2)]);
 
     //Update
-    setArrayOfObjects([
-      ...arrayOfObjects.map((item) =>
-        item.id === 1 ? { ...item, name: "ReactJS" } : item
-      ),
-    ]);
+    // setArrayOfObjects([
+    //   ...arrayOfObjects.map((item) =>
+    //     item.id === 1 ? { ...item, name: "ReactJS" } : item
+    //   ),
+    // ]);
+
+    //Immer
+    setArrayOfObjects(
+      produce((draft) => {
+        const status = draft.some(
+          (item) => item.applicationStatus === "Active"
+        );
+        draft.forEach((item) => {
+          item.applicationStatus = status ? "Active" : "Not Active";
+        });
+      })
+    );
   };
   return (
     <div>
@@ -36,7 +49,7 @@ function UpdateArrayOfObjects() {
       <ul>
         {arrayOfObjects.map((item, index) => (
           <li key={index}>
-            {item.id} - {item.name}
+            {item.id} - {item.name} - {item.applicationStatus}
           </li>
         ))}
       </ul>
