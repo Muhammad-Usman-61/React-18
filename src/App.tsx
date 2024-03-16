@@ -5,6 +5,7 @@ import ShowAlert from "./components/showAlert";
 import LikeButton from "./components/LikeButton";
 import UpdateObjects from "./components/UpdateObjects";
 import UpdateArrays from "./components/UpdateArrays";
+import UpdateArrayOfObjects from "./components/UpdateArrayOfObjects";
 function App() {
   return (
     <div>
@@ -42,6 +43,7 @@ function App() {
       <LikeButton />
       <UpdateObjects name="Usman" age={23} updatedName="Ali" />
       <UpdateArrays />
+      <UpdateArrayOfObjects />
     </div>
   );
 }
