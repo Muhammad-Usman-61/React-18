@@ -31,10 +31,31 @@ function App() {
     "7up",
   ]);
 
+  const [filteredItems, setFilteredItems] = useState<string[]>([]);
+
   const totalItemsList = foodItems.concat(drinkItems);
 
+  const handleSearch = (query: string) => {
+    const filteredFoodItems = foodItems.filter((item) =>
+      item.toLowerCase().includes(query.toLowerCase())
+    );
+    const filteredDrinkItems = drinkItems.filter((item) =>
+      item.toLowerCase().includes(query.toLowerCase())
+    );
+    if (
+      filteredFoodItems.length === 0 &&
+      filteredDrinkItems.length === 0 &&
+      query !== ""
+    ) {
+      setFilteredItems(["No items found"]);
+    } else {
+      setFilteredItems([...filteredFoodItems, ...filteredDrinkItems]);
+    }
+  };
+
   return (
-    <div>
+    <div className="max-w-lg">
+      <SearchBar onSearch={handleSearch} />
       <div className="border-b border-gray-200 flex items-center">
         <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
           <li
@@ -69,35 +90,39 @@ function App() {
         </ul>
         <NavBar cartItemsCount={totalItemsList.length} />
       </div>
-      <SearchBar />
+
       {showFoodItems && (
         <Cart
-          products={foodItems}
-          removeProduct={(index) => {
-            const newItems = foodItems.filter((_, i) => i !== index);
+          products={filteredItems.length > 0 ? filteredItems : foodItems}
+          removeProduct={(product) => {
+            const newItems = foodItems.filter((item) => item !== product);
             setFoodItems(newItems);
           }}
+          filteredItems={() => setFilteredItems([])}
         />
       )}
       {showDrinkItems && (
         <Cart
-          products={drinkItems}
-          removeProduct={(index) => {
-            const newItems = drinkItems.filter((_, i) => i !== index);
+          products={filteredItems.length > 0 ? filteredItems : drinkItems}
+          removeProduct={(product) => {
+            const newItems = drinkItems.filter((item) => item !== product);
             setDrinkItems(newItems);
+          }}
+          filteredItems={() => setFilteredItems([])}
+        />
+      )}
+      {totalItemsList.length !== 0 && (
+        <Button
+          text="Clear Cart"
+          color="text-white"
+          backgroundColor="bg-slate-800"
+          onHoverBackgroundColor="bg-slate-600"
+          onClick={() => {
+            setFoodItems([]);
+            setDrinkItems([]);
           }}
         />
       )}
-      <Button
-        text="Clear Cart"
-        color="text-white"
-        backgroundColor="bg-slate-800"
-        onHoverBackgroundColor="bg-slate-600"
-        onClick={() => {
-          setFoodItems([]);
-          setDrinkItems([]);
-        }}
-      />
       {/* <ListGroup
         items={["Multan", "Sialkot", "Vehari", "Islamabad", "Karachi"]}
         heading="Cities of Pakistan"

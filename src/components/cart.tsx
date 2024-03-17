@@ -1,9 +1,10 @@
 import { RxCrossCircled } from "react-icons/rx";
 interface Props {
   products: string[];
-  removeProduct: (index: number) => void;
+  removeProduct: (index: string) => void;
+  filteredItems: () => void;
 }
-const cart = ({ products, removeProduct }: Props) => {
+const cart = ({ products, removeProduct, filteredItems }: Props) => {
   return (
     <div>
       {products.length !== 0 && (
@@ -13,7 +14,9 @@ const cart = ({ products, removeProduct }: Props) => {
               {index + 1} - {product}{" "}
               <RxCrossCircled
                 className="cursor-pointer"
-                onClick={() => removeProduct(index)}
+                onClick={() => {
+                  removeProduct(product), filteredItems();
+                }}
               />
             </li>
           ))}
