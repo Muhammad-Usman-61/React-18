@@ -14,7 +14,7 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import UpdateState from "./components/Exercises/UpdateState";
 import AddString from "./components/Exercises/AddString";
-
+import UpdateObjectsInArray from "./components/Exercises/UpdateObjectsInArray";
 function App() {
   const [foodItems, setFoodItems] = useState([
     "Apple",
@@ -162,6 +162,7 @@ function App() {
       <UpdateArrayOfObjects /> */}
       <UpdateState />
       <AddString />
+      <UpdateObjectsInArray />
     </div>
   );
 }
