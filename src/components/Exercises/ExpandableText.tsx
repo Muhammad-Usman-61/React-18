@@ -1,27 +1,21 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 interface Props {
-  children: ReactNode;
+  children: string;
   maxLength: number;
 }
 const ExpandableText = ({ children, maxLength }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const renderedText = isExpanded
-    ? children + " ..."
-    : typeof children === "string" && children.slice(0, maxLength) + "...";
+  if (children.length <= maxLength) return <p>{children}</p>;
+
+  const text = isExpanded ? children : children.substring(0, maxLength);
 
   return (
-    <div>
-      <h1>Expandable Text</h1>
-      <p>
-        {renderedText}
-        <span
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="cursor-pointer underline"
-        >
-          {isExpanded ? "less" : "more"}
-        </span>
-      </p>
-    </div>
+    <p>
+      {text}...
+      <button onClick={() => setIsExpanded(!isExpanded)}>
+        {isExpanded ? "Less" : "More"}
+      </button>
+    </p>
   );
 };
 
