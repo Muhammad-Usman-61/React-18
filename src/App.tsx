@@ -166,7 +166,7 @@ function App() {
       <UpdateObjectsInArray />
       <ExpandableText maxLength={20}>
         This is a long text This is a long text This is a long text This is a
-        long text This is a long text
+        long text This is a long text?
       </ExpandableText>
     </div>
   );
