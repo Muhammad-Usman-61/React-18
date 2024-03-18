@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../Button";
-
+import { produce } from "immer";
 const UpdateObjectsInArray = () => {
   const [cart, setCart] = useState({
     discount: 0.1,
@@ -41,11 +41,11 @@ const UpdateObjectsInArray = () => {
         onClick={() => {
           setCart({
             ...cart,
-            items: cart.items.map((item) => {
-              return item.name === "Banana"
+            items: cart.items.map((item) =>
+              item.name === "Banana"
                 ? { ...item, quantity: item.quantity + 1 }
-                : item;
-            }),
+                : item
+            ),
           });
         }}
       />
@@ -55,14 +55,11 @@ const UpdateObjectsInArray = () => {
         backgroundColor="bg-blue-700"
         onHoverBackgroundColor="bg-blue-800"
         onClick={() => {
-          setCart({
-            ...cart,
-            items: cart.items.map((item) => {
-              return item.name === "Orange"
-                ? { ...item, quantity: item.quantity + 1 }
-                : item;
-            }),
-          });
+          setCart(
+            produce((draft) => {
+              draft.items[2].quantity += 1;
+            })
+          );
         }}
       />
     </div>
