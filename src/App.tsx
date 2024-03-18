@@ -12,6 +12,8 @@ import NavBar from "./components/navBar";
 import Cart from "./components/cart";
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
+import UpdateState from "./components/Exercises/UpdateState";
+import AddString from "./components/Exercises/AddString";
 
 function App() {
   const [foodItems, setFoodItems] = useState([
@@ -158,6 +160,8 @@ function App() {
       <UpdateObjects name="Usman" age={23} updatedName="Ali" />
       <UpdateArrays />
       <UpdateArrayOfObjects /> */}
+      <UpdateState />
+      <AddString />
     </div>
   );
 }
