@@ -15,6 +15,7 @@ import SearchBar from "./components/SearchBar";
 import UpdateState from "./components/Exercises/UpdateState";
 import AddString from "./components/Exercises/AddString";
 import UpdateObjectsInArray from "./components/Exercises/UpdateObjectsInArray";
+import ExpandableText from "./components/Exercises/ExpandableText";
 function App() {
   const [foodItems, setFoodItems] = useState([
     "Apple",
@@ -163,6 +164,10 @@ function App() {
       <UpdateState />
       <AddString />
       <UpdateObjectsInArray />
+      <ExpandableText maxLength={20}>
+        This is a long text This is a long text This is a long text This is a
+        long text This is a long text
+      </ExpandableText>
     </div>
   );
 }
