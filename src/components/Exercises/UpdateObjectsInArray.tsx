@@ -18,7 +18,7 @@ const UpdateObjectsInArray = () => {
         </div>
       ))}
       <Button
-        text="Add Apple"
+        text="Add Apple Item"
         color="text-white"
         backgroundColor="bg-blue-700"
         onHoverBackgroundColor="bg-blue-800"
@@ -34,7 +34,7 @@ const UpdateObjectsInArray = () => {
         }}
       />
       <Button
-        text="Add Banana"
+        text="Add Banana Item"
         color="text-white"
         backgroundColor="bg-blue-700"
         onHoverBackgroundColor="bg-blue-800"
@@ -50,7 +50,7 @@ const UpdateObjectsInArray = () => {
         }}
       />
       <Button
-        text="Add Orange"
+        text="Add Orange Item"
         color="text-white"
         backgroundColor="bg-blue-700"
         onHoverBackgroundColor="bg-blue-800"
