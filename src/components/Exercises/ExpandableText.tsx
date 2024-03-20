@@ -16,7 +16,7 @@ const ExpandableText = ({ children, maxLength }: Props) => {
         onClick={() => setIsExpanded(!isExpanded)}
         className="underline hover:no-underline"
       >
-        {isExpanded ? "less" : "more"}
+        {isExpanded ? "read less" : "read more"}
       </button>
     </p>
   );
