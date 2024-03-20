@@ -165,8 +165,10 @@ function App() {
       <AddString />
       <UpdateObjectsInArray />
       <ExpandableText maxLength={20}>
-        This is a long text This is a long text This is a long text This is a
-        long text This is a long text?
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, earum?
+        Eaque ullam expedita dolorem vitae dolorum. Excepturi, aut? Quis
+        voluptas praesentium quidem dolores tenetur nisi dolore delectus
+        voluptatibus optio sit!
       </ExpandableText>
     </div>
   );
