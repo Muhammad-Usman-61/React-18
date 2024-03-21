@@ -1,7 +1,12 @@
+import { FormEvent } from "react";
 import Button from "./Button";
 const htmlForm = () => {
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    console.log("Submitted");
+  };
   return (
-    <form className="max-w-sm mx-auto">
+    <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
       <div className="mb-5">
         <label
           htmlFor="email"
@@ -38,7 +43,6 @@ const htmlForm = () => {
             type="checkbox"
             value=""
             className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
-            required
           />
         </div>
         <label
