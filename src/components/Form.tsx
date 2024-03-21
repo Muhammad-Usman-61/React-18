@@ -1,9 +1,18 @@
-import { FormEvent } from "react";
+import { FormEvent, useRef } from "react";
 import Button from "./Button";
 const htmlForm = () => {
+  const refEmail = useRef<HTMLInputElement>(null);
+  const refPassword = useRef<HTMLInputElement>(null);
+  const userLogin = {
+    email: "",
+    password: "",
+  };
+
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log("Submitted");
+    userLogin.email = refEmail.current!.value;
+    userLogin.password = refPassword.current!.value;
+    console.log(userLogin);
   };
   return (
     <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
@@ -17,8 +26,9 @@ const htmlForm = () => {
         <input
           type="email"
           id="email"
+          ref={refEmail}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          placeholder="name@flowbite.com"
+          placeholder="name@gmail.com"
           required
         />
       </div>
@@ -32,26 +42,12 @@ const htmlForm = () => {
         <input
           type="password"
           id="password"
+          ref={refPassword}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
       </div>
-      <div className="flex items-start mb-5">
-        <div className="flex items-center h-5">
-          <input
-            id="remember"
-            type="checkbox"
-            value=""
-            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
-          />
-        </div>
-        <label
-          htmlFor="remember"
-          className="ms-2 text-sm font-medium text-gray-900"
-        >
-          Remember me
-        </label>
-      </div>
+
       <Button type="submit" text="Submit" />
     </form>
   );
