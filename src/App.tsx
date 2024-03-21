@@ -16,7 +16,8 @@
 // import AddString from "./components/Exercises/AddString";
 // import UpdateObjectsInArray from "./components/Exercises/UpdateObjectsInArray";
 // import ExpandableText from "./components/Exercises/ExpandableText";
-import Form from "./components/Form";
+// import Form from "./components/Form";
+import ReactHookForm from "./components/ReactHookForm";
 function App() {
   //   const [foodItems, setFoodItems] = useState([
   //     "Apple",
@@ -171,7 +172,8 @@ function App() {
         voluptas praesentium quidem dolores tenetur nisi dolore delectus
         voluptatibus optio sit!
       </ExpandableText> */}
-      <Form />
+      {/*<Form />*/}
+      <ReactHookForm />
     </div>
   );
 }
