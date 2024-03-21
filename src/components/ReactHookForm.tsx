@@ -1,18 +1,21 @@
 import { FieldValues, useForm } from "react-hook-form";
 import Button from "./Button";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-interface FormData {
-  name: string;
-  email: string;
-  password: string;
-}
+const schema = z.object({
+  name: z.string().min(3, "Name is too short"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(5, "Password must be at least 5 characters"),
+});
 
+type FormData = z.infer<typeof schema>;
 const ReactHookForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => console.log(data);
   return (
@@ -27,16 +30,11 @@ const ReactHookForm = () => {
         <input
           type="text"
           id="name"
-          {...register("name", { required: true, minLength: 3 })}
+          {...register("name")}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         />
-        {errors.name?.type === "required" && (
-          <span className="text-red-500 text-sm">This field is required</span>
-        )}
-        {errors.name?.type === "minLength" && (
-          <span className="text-red-500 text-sm">
-            This field should have at least 5 characters
-          </span>
+        {errors.name && (
+          <span className="text-red-500 text-sm">{errors.name.message}</span>
         )}
       </div>
       <div className="mb-5">
@@ -49,12 +47,17 @@ const ReactHookForm = () => {
         <input
           type="email"
           id="email"
-          {...register("email", { required: true })}
+          {...register("email", {
+            setValueAs: (value) => {
+              if (value === "") return undefined;
+              return value;
+            },
+          })}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           placeholder="name@gmail.com"
         />
-        {errors.email?.type === "required" && (
-          <span className="text-red-500 text-sm">This field is required</span>
+        {errors.email && (
+          <span className="text-red-500 text-sm">{errors.email.message}</span>
         )}
       </div>
       <div className="mb-5">
@@ -67,15 +70,12 @@ const ReactHookForm = () => {
         <input
           type="password"
           id="password"
-          {...register("password", { required: true, minLength: 5 })}
+          {...register("password")}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         />
-        {errors.password?.type === "required" && (
-          <span className="text-red-500 text-sm">This field is required</span>
-        )}
-        {errors.password?.type === "minLength" && (
+        {errors.password && (
           <span className="text-red-500 text-sm">
-            This field should have at least 5 characters
+            {errors.password.message}
           </span>
         )}
       </div>
