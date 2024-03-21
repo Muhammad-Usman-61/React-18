@@ -10,6 +10,16 @@ const schema = z.object({
 });
 
 type FormData = z.infer<typeof schema>;
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const schema = z.object({
+  name: z.string().min(3, "Name is too short"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(5, "Password must be at least 5 characters"),
+});
+
+type FormData = z.infer<typeof schema>;
 const ReactHookForm = () => {
   const {
     register,
@@ -40,6 +50,8 @@ const ReactHookForm = () => {
         />
         {errors.name && (
           <span className="text-red-500 text-sm">{errors.name.message}</span>
+        {errors.name && (
+          <span className="text-red-500 text-sm">{errors.name.message}</span>
         )}
       </div>
       <div className="mb-5">
@@ -58,9 +70,17 @@ const ReactHookForm = () => {
               return value;
             },
           })}
+          {...register("email", {
+            setValueAs: (value) => {
+              if (value === "") return undefined;
+              return value;
+            },
+          })}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           placeholder="name@gmail.com"
         />
+        {errors.email && (
+          <span className="text-red-500 text-sm">{errors.email.message}</span>
         {errors.email && (
           <span className="text-red-500 text-sm">{errors.email.message}</span>
         )}
@@ -76,10 +96,13 @@ const ReactHookForm = () => {
           type="password"
           id="password"
           {...register("password")}
+          {...register("password")}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         />
         {errors.password && (
+        {errors.password && (
           <span className="text-red-500 text-sm">
+            {errors.password.message}
             {errors.password.message}
           </span>
         )}
