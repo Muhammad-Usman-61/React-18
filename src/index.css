@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-#root {
+body {
   padding: 1rem;
   background-color: #f4f4f4;
 }
