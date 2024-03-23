@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const schema = z.object({
   name: z.string().min(3, "Name is too short"),
   email: z.string().email("Invalid email address"),
-  password: z.string().min(5, "Password must be at least 5 characters"),
+  // password: z.string().min(5, "Password must be at least 5 characters"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -65,7 +65,7 @@ const ReactHookForm = () => {
           <span className="text-red-500 text-sm">{errors.email.message}</span>
         )}
       </div>
-      <div className="mb-5">
+      {/* <div className="mb-5">
         <label
           htmlFor="password"
           className="block mb-2 text-sm font-medium text-gray-900"
@@ -85,7 +85,7 @@ const ReactHookForm = () => {
             {errors.password.message}
           </span>
         )}
-      </div>
+      </div> */}
 
       <button
         disabled={!isValid}
