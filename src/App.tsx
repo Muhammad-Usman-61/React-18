@@ -58,7 +58,23 @@ function App() {
   //       setFilteredItems([...filteredFoodItems, ...filteredDrinkItems]);
   //     }
   //   };
-
+  const expenses = [
+    {
+      id: 1,
+      description: "Car Insurance",
+      amount: 294.67,
+      catagory: "Transportation",
+    },
+    { id: 2, description: "Rent", amount: 1000, catagory: "Housing" },
+    { id: 3, description: "Phone Bill", amount: 50, catagory: "Utilities" },
+    { id: 4, description: "Groceries", amount: 200, catagory: "Food" },
+    { id: 5, description: "Internet", amount: 50, catagory: "Utilities" },
+    { id: 6, description: "Gas", amount: 50, catagory: "Transportation" },
+    { id: 7, description: "Water", amount: 20, catagory: "Utilities" },
+    { id: 8, description: "Electricity", amount: 100, catagory: "Utilities" },
+    { id: 9, description: "Health Insurance", amount: 100, catagory: "Health" },
+    { id: 10, description: "Dental", amount: 50, catagory: "Health" },
+  ];
   return (
     <div className="max-w-lg">
       {/*     <SearchBar onSearch={handleSearch} />
@@ -175,7 +191,7 @@ function App() {
       </ExpandableText> */}
       {/*<Form />*/}
       {/* <ReactHookForm /> */}
-      <ExpenseList expenses={[]} />
+      <ExpenseList expenses={expenses} />
     </div>
   );
 }
