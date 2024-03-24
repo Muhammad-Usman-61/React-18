@@ -2,11 +2,7 @@ interface Props {
   text: string;
   type?: "button" | "submit" | "reset";
   color?: "text-white" | "text-gray-800" | "text-gray-900" | "text-black";
-  backgroundColor?:
-    | "bg-blue-700"
-    | "bg-gray-800"
-    | "bg-red-700"
-    | "bg-slate-800";
+  backgroundColor?: string;
   onHoverBackgroundColor?: string;
   onClick?: () => void;
 }

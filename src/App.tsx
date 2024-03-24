@@ -18,6 +18,7 @@
 // import ExpandableText from "./components/Exercises/ExpandableText";
 // import Form from "./components/Form";
 import ReactHookForm from "./components/ReactHookForm";
+import ExpenseList from "./expense-tracker/components/ExpenseList";
 function App() {
   //   const [foodItems, setFoodItems] = useState([
   //     "Apple",
@@ -173,7 +174,8 @@ function App() {
         voluptatibus optio sit!
       </ExpandableText> */}
       {/*<Form />*/}
-      <ReactHookForm />
+      {/* <ReactHookForm /> */}
+      <ExpenseList expenses={[]} />
     </div>
   );
 }

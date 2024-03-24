@@ -1,3 +1,4 @@
+import Button from "../../components/Button";
 interface Expense {
   id: number;
   description: string;
@@ -23,7 +24,9 @@ const ExpenseList = ({ expenses }: Props) => {
             <td>{expense.description}</td>
             <td>{expense.amount}</td>
             <td>{expense.catagory}</td>
-            <td></td>
+            <td>
+              <Button text="Delete" backgroundColor="bg-red-600" />
+            </td>
           </tr>
         ))}
       </tbody>
