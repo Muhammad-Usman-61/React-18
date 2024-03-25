@@ -1,7 +1,10 @@
 interface Props {
   onFilter: (catagory: string) => void;
+  expensesTotal: string[];
 }
-const ExpenseFilter = ({ onFilter }: Props) => {
+
+const ExpenseFilter = ({ onFilter, expensesTotal }: Props) => {
+  if (expensesTotal.length === 0) return null;
   return (
     <select
       onChange={(event) => onFilter(event.target.value)}

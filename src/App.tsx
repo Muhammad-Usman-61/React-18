@@ -187,7 +187,10 @@ function App() {
       </ExpandableText> */}
       {/*<Form />*/}
       {/* <ReactHookForm /> */}
-      <ExpenseFilter onFilter={(catagory) => setSelectedCatagory(catagory)} />
+      <ExpenseFilter
+        onFilter={(catagory) => setSelectedCatagory(catagory)}
+        expensesTotal={expenses.map((expense) => expense.catagory)}
+      />
       <ExpenseList
         expenses={visibleExpenses}
         onDelete={(id) => {
