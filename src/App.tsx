@@ -67,6 +67,10 @@ function App() {
     { id: 5, description: "Gas", amount: 50, catagory: "Equipments" },
   ];
   const [expenses, setExpenses] = useState(totalExpenses);
+  const [selectedCatagory, setSelectedCatagory] = useState("");
+  const visibleExpenses = selectedCatagory
+    ? expenses.filter((e) => e.catagory === selectedCatagory)
+    : expenses;
   return (
     <div className="max-w-lg">
       {/*     <SearchBar onSearch={handleSearch} />
@@ -183,15 +187,9 @@ function App() {
       </ExpandableText> */}
       {/*<Form />*/}
       {/* <ReactHookForm /> */}
-      <ExpenseFilter
-        onFilter={(catagory1) =>
-          expenses.filter(
-            (filteredCatagory) => filteredCatagory.catagory === catagory1
-          )
-        }
-      />
+      <ExpenseFilter onFilter={(catagory) => setSelectedCatagory(catagory)} />
       <ExpenseList
-        expenses={expenses}
+        expenses={visibleExpenses}
         onDelete={(id) => {
           setExpenses(expenses.filter((filtered) => filtered.id !== id));
         }}
