@@ -1,19 +1,32 @@
-import { useState } from "react";
 import catagories from "../catagories";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const schema = z.object({
+  description: z.string().min(3),
+  amount: z
+    .number({ invalid_type_error: "Amount is required." })
+    .min(1)
+    .max(1000000),
+  catagory: z.enum(catagories, {
+    errorMap: () => ({
+      message: "Please select a catagory.",
+    }),
+  }),
+});
+type ExpenseFormData = z.infer<typeof schema>;
 
 const ExpenseForm = () => {
-  const [expense, addExpense] = useState({
-    description: "",
-    amount: 0,
-    catagory: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ExpenseFormData>({
+    resolver: zodResolver(schema),
   });
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(expense);
-  };
-
   return (
-    <form className="mb-5" onSubmit={handleSubmit}>
+    <form className="mb-5" onSubmit={handleSubmit((data) => console.log(data))}>
       <div className="mb-4">
         <label
           htmlFor="description"
@@ -24,12 +37,14 @@ const ExpenseForm = () => {
         <input
           type="text"
           id="description"
-          value={expense.description}
-          onChange={(e) =>
-            addExpense({ ...expense, description: e.target.value })
-          }
+          {...register("description")}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         />
+        {errors.description && (
+          <span className="text-red-500 text-sm">
+            {errors.description.message}
+          </span>
+        )}
       </div>
       <div className="mb-4">
         <label
@@ -41,12 +56,12 @@ const ExpenseForm = () => {
         <input
           type="number"
           id="amount"
-          value={expense.amount}
-          onChange={(e) =>
-            addExpense({ ...expense, amount: parseInt(e.target.value) })
-          }
+          {...register("amount", { valueAsNumber: true })}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         />
+        {errors.amount && (
+          <span className="text-red-500 text-sm">{errors.amount.message}</span>
+        )}
       </div>
       <div className="mb-4">
         <label
@@ -57,8 +72,7 @@ const ExpenseForm = () => {
         </label>
         <select
           id="catagory"
-          value={expense.catagory}
-          onChange={(e) => addExpense({ ...expense, catagory: e.target.value })}
+          {...register("catagory")}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-2"
         >
           <option value=""></option>
@@ -68,7 +82,12 @@ const ExpenseForm = () => {
               {catagory}
             </option>
           ))}
-        </select>
+        </select>{" "}
+        {errors.catagory && (
+          <span className="text-red-500 text-sm">
+            {errors.catagory.message}
+          </span>
+        )}
       </div>
       <button
         type="submit"
