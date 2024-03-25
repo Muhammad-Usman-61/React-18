@@ -71,7 +71,12 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
             >
               {selectedCurrency}
             </span>
-            {expenses.reduce((acc, expenses) => expenses.amount + acc, 0)}
+            {selectedCurrency === currency[0]
+              ? expenses.reduce((acc, expenses) => expenses.amount + acc, 0)
+              : (
+                  expenses.reduce((acc, expenses) => expenses.amount + acc, 0) *
+                  277.85
+                ).toFixed(2)}
           </th>
           <th className="px-6 py-3"></th>
           <th className="px-6 py-3"></th>
