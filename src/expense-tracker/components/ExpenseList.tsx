@@ -29,38 +29,40 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
         </thead>
 
         <tbody>
-          {expenses.map((expense) => (
-            <tr
-              key={expense.id}
-              className="odd:bg-white even:bg-gray-50 border-b"
-            >
-              <td className="px-6 py-4">{expense.description}</td>
-              <td className="px-6 py-4">
-                <span
-                  className={
-                    selectedCurrency === currency[0]
-                      ? "text-green-500"
-                      : "text-green-500 pr-1"
-                  }
-                >
-                  {selectedCurrency}
-                </span>
+          {expenses
+            .map((expense) => (
+              <tr
+                key={expense.id}
+                className="odd:bg-white even:bg-gray-50 border-b"
+              >
+                <td className="px-6 py-4">{expense.description}</td>
+                <td className="px-6 py-4">
+                  <span
+                    className={
+                      selectedCurrency === currency[0]
+                        ? "text-green-500"
+                        : "text-green-500 pr-1"
+                    }
+                  >
+                    {selectedCurrency}
+                  </span>
 
-                {selectedCurrency === currency[0]
-                  ? expense.amount
-                  : (expense.amount * 277.85).toFixed(2)}
-              </td>
-              <td className="px-6 py-4">{expense.catagory}</td>
-              <td className="px-6 py-4">
-                <Button
-                  text="Delete"
-                  backgroundColor="bg-red-600"
-                  onHoverBackgroundColor="bg-red-900"
-                  onClick={() => onDelete(expense.id)}
-                />
-              </td>
-            </tr>
-          ))}
+                  {selectedCurrency === currency[0]
+                    ? expense.amount
+                    : (expense.amount * 277.85).toFixed(2)}
+                </td>
+                <td className="px-6 py-4">{expense.catagory}</td>
+                <td className="px-6 py-4">
+                  <Button
+                    text="Delete"
+                    backgroundColor="bg-red-600"
+                    onHoverBackgroundColor="bg-red-900"
+                    onClick={() => onDelete(expense.id)}
+                  />
+                </td>
+              </tr>
+            ))
+            .reverse()}
         </tbody>
         <tfoot className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
