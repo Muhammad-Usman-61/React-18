@@ -20,11 +20,14 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
     <>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-          <th className="px-6 py-3">Description</th>
-          <th className="px-6 py-3">Amount</th>
-          <th className="px-6 py-3">Catagory</th>
-          <th className="px-6 py-3">Action</th>
+          <tr>
+            <th className="px-6 py-3">Description</th>
+            <th className="px-6 py-3">Amount</th>
+            <th className="px-6 py-3">Catagory</th>
+            <th className="px-6 py-3">Action</th>
+          </tr>
         </thead>
+
         <tbody>
           {expenses.map((expense) => (
             <tr
@@ -60,26 +63,30 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
           ))}
         </tbody>
         <tfoot className="text-xs text-gray-700 uppercase bg-gray-50">
-          <th className="px-6 py-3">Total</th>
-          <th className="px-6 py-3">
-            <span
-              className={
-                selectedCurrency === currency[0]
-                  ? "text-green-500"
-                  : "text-green-500 pr-1"
-              }
-            >
-              {selectedCurrency}
-            </span>
-            {selectedCurrency === currency[0]
-              ? expenses.reduce((acc, expenses) => expenses.amount + acc, 0)
-              : (
-                  expenses.reduce((acc, expenses) => expenses.amount + acc, 0) *
-                  277.85
-                ).toFixed(2)}
-          </th>
-          <th className="px-6 py-3"></th>
-          <th className="px-6 py-3"></th>
+          <tr>
+            <td className="px-6 py-3">Total</td>
+            <td className="px-6 py-3">
+              <span
+                className={
+                  selectedCurrency === currency[0]
+                    ? "text-green-500"
+                    : "text-green-500 pr-1"
+                }
+              >
+                {selectedCurrency}
+              </span>
+              {selectedCurrency === currency[0]
+                ? expenses.reduce((acc, expenses) => expenses.amount + acc, 0)
+                : (
+                    expenses.reduce(
+                      (acc, expenses) => expenses.amount + acc,
+                      0
+                    ) * 277.85
+                  ).toFixed(2)}
+            </td>
+            <td className="px-6 py-3"></td>
+            <td className="px-6 py-3"></td>
+          </tr>
         </tfoot>
       </table>
 

@@ -19,6 +19,7 @@ import { useState } from "react";
 // import Form from "./components/Form";
 //import ReactHookForm from "./components/ReactHookForm";
 import ExpenseList from "./expense-tracker/components/ExpenseList";
+import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
 function App() {
   //   const [foodItems, setFoodItems] = useState([
   //     "Apple",
@@ -59,11 +60,11 @@ function App() {
   //     }
   //   };
   const totalExpenses = [
-    { id: 1, description: "Rent", amount: 1000, catagory: "Car" },
+    { id: 1, description: "Rent", amount: 1000, catagory: "Equipments" },
     { id: 2, description: "Phone Bill", amount: 50, catagory: "Utilities" },
-    { id: 3, description: "Groceries", amount: 200, catagory: "Food" },
+    { id: 3, description: "Groceries", amount: 200, catagory: "Grocery" },
     { id: 4, description: "Internet", amount: 50, catagory: "Utilities" },
-    { id: 5, description: "Gas", amount: 50, catagory: "Transportation" },
+    { id: 5, description: "Gas", amount: 50, catagory: "Equipments" },
   ];
   const [expenses, setExpenses] = useState(totalExpenses);
   return (
@@ -182,6 +183,13 @@ function App() {
       </ExpandableText> */}
       {/*<Form />*/}
       {/* <ReactHookForm /> */}
+      <ExpenseFilter
+        onFilter={(catagory1) =>
+          expenses.filter(
+            (filteredCatagory) => filteredCatagory.catagory === catagory1
+          )
+        }
+      />
       <ExpenseList
         expenses={expenses}
         onDelete={(id) => {
