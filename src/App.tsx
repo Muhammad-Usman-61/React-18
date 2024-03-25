@@ -190,7 +190,11 @@ function App() {
       </ExpandableText> */}
       {/*<Form />*/}
       {/* <ReactHookForm /> */}
-      <ExpenseForm />
+      <ExpenseForm
+        onAddExpense={(expense) =>
+          setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
+        }
+      />
       <ExpenseFilter
         onFilter={(catagory) => setSelectedCatagory(catagory)}
         expensesTotal={expenses.map((expense) => expense.catagory)}
