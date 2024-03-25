@@ -1,3 +1,4 @@
+import { catagories } from "../../App";
 interface Props {
   onFilter: (catagory: string) => void;
   expensesTotal: string[];
@@ -11,9 +12,11 @@ const ExpenseFilter = ({ onFilter, expensesTotal }: Props) => {
       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-2"
     >
       <option value="">All Catagories</option>
-      <option value="Grocery">Grocery</option>
-      <option value="Utilities">Utilities</option>
-      <option value="Equipments">Equipments</option>
+      {catagories.map((catagory) => (
+        <option key={catagory} value={catagory}>
+          {catagory}
+        </option>
+      ))}
     </select>
   );
 };

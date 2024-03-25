@@ -20,6 +20,9 @@ import { useState } from "react";
 //import ReactHookForm from "./components/ReactHookForm";
 import ExpenseList from "./expense-tracker/components/ExpenseList";
 import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
+import ExpenseForm from "./expense-tracker/components/ExpenseForm";
+
+export const catagories = ["Grocery", "Utilities", "Equipments"];
 function App() {
   //   const [foodItems, setFoodItems] = useState([
   //     "Apple",
@@ -66,6 +69,7 @@ function App() {
     { id: 4, description: "Internet", amount: 50, catagory: "Utilities" },
     { id: 5, description: "Gas", amount: 50, catagory: "Equipments" },
   ];
+
   const [expenses, setExpenses] = useState(totalExpenses);
   const [selectedCatagory, setSelectedCatagory] = useState("");
   const visibleExpenses = selectedCatagory
@@ -187,6 +191,7 @@ function App() {
       </ExpandableText> */}
       {/*<Form />*/}
       {/* <ReactHookForm /> */}
+      <ExpenseForm />
       <ExpenseFilter
         onFilter={(catagory) => setSelectedCatagory(catagory)}
         expensesTotal={expenses.map((expense) => expense.catagory)}
