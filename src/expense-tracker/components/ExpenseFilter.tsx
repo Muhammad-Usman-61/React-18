@@ -1,4 +1,4 @@
-import { catagories } from "../../App";
+import catagories from "../catagories";
 interface Props {
   onFilter: (catagory: string) => void;
   expensesTotal: string[];

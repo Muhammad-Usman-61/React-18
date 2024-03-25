@@ -22,7 +22,6 @@ import ExpenseList from "./expense-tracker/components/ExpenseList";
 import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
 import ExpenseForm from "./expense-tracker/components/ExpenseForm";
 
-export const catagories = ["Grocery", "Utilities", "Equipments"];
 function App() {
   //   const [foodItems, setFoodItems] = useState([
   //     "Apple",

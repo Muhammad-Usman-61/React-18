@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { catagories } from "../../App";
+import catagories from "../catagories";
 
 const ExpenseForm = () => {
   const [expense, addExpense] = useState({
