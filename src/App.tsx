@@ -10,7 +10,7 @@
 // import { MdNoDrinks } from "react-icons/md";
 // import NavBar from "./components/navBar";
 // import Cart from "./components/cart";
-import { useState } from "react";
+// import { useState } from "react";
 // import SearchBar from "./components/SearchBar";
 // import UpdateState from "./components/Exercises/UpdateState";
 // import AddString from "./components/Exercises/AddString";
@@ -77,7 +77,7 @@ function App() {
   //   ? expenses.filter((e) => e.catagory === selectedCatagory)
   //   : expenses;
 
-  const [catagory, setCatagory] = useState("");
+  // const [catagory, setCatagory] = useState("");
   return (
     <div className="max-w-lg">
       {/*     <SearchBar onSearch={handleSearch} />
@@ -211,12 +211,12 @@ function App() {
       /> */}
       {/* <EffectHook /> */}
 
-      <select onChange={(event) => setCatagory(event.target.value)}>
+      {/* <select onChange={(event) => setCatagory(event.target.value)}>
         <option value=""></option>
         <option value="Catagory1">Catagory 1</option>
         <option value="Catagory2">Catagory 2</option>
       </select>
-      {/* <ProductList catagory={catagory} /> */}
+      <ProductList catagory={catagory} /> */}
       <ProductList />
     </div>
   );
