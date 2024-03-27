@@ -10,7 +10,7 @@
 // import { MdNoDrinks } from "react-icons/md";
 // import NavBar from "./components/navBar";
 // import Cart from "./components/cart";
-//import { useState } from "react";
+import { useState } from "react";
 // import SearchBar from "./components/SearchBar";
 // import UpdateState from "./components/Exercises/UpdateState";
 // import AddString from "./components/Exercises/AddString";
@@ -21,7 +21,7 @@
 //import ExpenseList from "./expense-tracker/components/ExpenseList";
 //import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
 //import ExpenseForm from "./expense-tracker/components/ExpenseForm";
-import EffectHook from "./components/EffectHook";
+//import EffectHook from "./components/EffectHook";
 import ProductList from "./components/ProductList";
 
 function App() {
@@ -76,6 +76,8 @@ function App() {
   // const visibleExpenses = selectedCatagory
   //   ? expenses.filter((e) => e.catagory === selectedCatagory)
   //   : expenses;
+
+  const [catagory, setCatagory] = useState("");
   return (
     <div className="max-w-lg">
       {/*     <SearchBar onSearch={handleSearch} />
@@ -207,8 +209,14 @@ function App() {
           setExpenses(expenses.filter((filtered) => filtered.id !== id));
         }}
       /> */}
-      <EffectHook />
-      <ProductList />
+      {/* <EffectHook /> */}
+
+      <select onChange={(event) => setCatagory(event.target.value)}>
+        <option value=""></option>
+        <option value="Catagory1">Catagory 1</option>
+        <option value="Catagory2">Catagory 2</option>
+      </select>
+      <ProductList catagory={catagory} />
     </div>
   );
 }

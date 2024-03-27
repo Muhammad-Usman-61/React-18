@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-const ProductList = () => {
+const ProductList = ({ catagory }: { catagory: string }) => {
   const [products, setProducts] = useState<string[]>([]);
 
   useEffect(() => {
-    console.log("ProductList Fetching data from server");
+    console.log("ProductList Fetching data from", catagory);
     setProducts(["Apple", "Banana", "Orange"]);
-  }, []);
+  }, [catagory]);
   return <div>ProductList</div>;
 };
 
