@@ -10,7 +10,7 @@
 // import { MdNoDrinks } from "react-icons/md";
 // import NavBar from "./components/navBar";
 // import Cart from "./components/cart";
-import { useState } from "react";
+//import { useState } from "react";
 // import SearchBar from "./components/SearchBar";
 // import UpdateState from "./components/Exercises/UpdateState";
 // import AddString from "./components/Exercises/AddString";
@@ -18,9 +18,10 @@ import { useState } from "react";
 // import ExpandableText from "./components/Exercises/ExpandableText";
 // import Form from "./components/Form";
 //import ReactHookForm from "./components/ReactHookForm";
-import ExpenseList from "./expense-tracker/components/ExpenseList";
-import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
-import ExpenseForm from "./expense-tracker/components/ExpenseForm";
+//import ExpenseList from "./expense-tracker/components/ExpenseList";
+//import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
+//import ExpenseForm from "./expense-tracker/components/ExpenseForm";
+import EffectHook from "./components/EffectHook";
 
 function App() {
   //   const [foodItems, setFoodItems] = useState([
@@ -61,19 +62,19 @@ function App() {
   //       setFilteredItems([...filteredFoodItems, ...filteredDrinkItems]);
   //     }
   //   };
-  const totalExpenses = [
-    { id: 1, description: "Rent", amount: 1000, catagory: "Equipments" },
-    { id: 2, description: "Phone Bill", amount: 50, catagory: "Utilities" },
-    { id: 3, description: "Groceries", amount: 200, catagory: "Grocery" },
-    { id: 4, description: "Internet", amount: 50, catagory: "Utilities" },
-    { id: 5, description: "Gas", amount: 50, catagory: "Equipments" },
-  ];
+  // const totalExpenses = [
+  //   { id: 1, description: "Rent", amount: 1000, catagory: "Equipments" },
+  //   { id: 2, description: "Phone Bill", amount: 50, catagory: "Utilities" },
+  //   { id: 3, description: "Groceries", amount: 200, catagory: "Grocery" },
+  //   { id: 4, description: "Internet", amount: 50, catagory: "Utilities" },
+  //   { id: 5, description: "Gas", amount: 50, catagory: "Equipments" },
+  // ];
 
-  const [expenses, setExpenses] = useState(totalExpenses);
-  const [selectedCatagory, setSelectedCatagory] = useState("");
-  const visibleExpenses = selectedCatagory
-    ? expenses.filter((e) => e.catagory === selectedCatagory)
-    : expenses;
+  // const [expenses, setExpenses] = useState(totalExpenses);
+  // const [selectedCatagory, setSelectedCatagory] = useState("");
+  // const visibleExpenses = selectedCatagory
+  //   ? expenses.filter((e) => e.catagory === selectedCatagory)
+  //   : expenses;
   return (
     <div className="max-w-lg">
       {/*     <SearchBar onSearch={handleSearch} />
@@ -190,7 +191,7 @@ function App() {
       </ExpandableText> */}
       {/*<Form />*/}
       {/* <ReactHookForm /> */}
-      <ExpenseForm
+      {/* <ExpenseForm
         onAddExpense={(expense) =>
           setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
         }
@@ -204,7 +205,8 @@ function App() {
         onDelete={(id) => {
           setExpenses(expenses.filter((filtered) => filtered.id !== id));
         }}
-      />
+      /> */}
+      <EffectHook />
     </div>
   );
 }
