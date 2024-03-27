@@ -22,6 +22,7 @@
 //import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
 //import ExpenseForm from "./expense-tracker/components/ExpenseForm";
 import EffectHook from "./components/EffectHook";
+import ProductList from "./components/ProductList";
 
 function App() {
   //   const [foodItems, setFoodItems] = useState([
@@ -207,6 +208,7 @@ function App() {
         }}
       /> */}
       <EffectHook />
+      <ProductList />
     </div>
   );
 }
