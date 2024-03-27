@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 // const ProductList = ({ catagory }: { catagory: string }) => {
 //   const [products, setProducts] = useState<string[]>([]);
@@ -9,15 +10,32 @@ import { useEffect, useState } from "react";
 //   }, [catagory]);
 //   return <div>ProductList</div>;
 // };
-
+interface User {
+  id: number;
+  name: string;
+}
 const ProductList = () => {
-  const connect = () => console.log("Connecting to database");
-  const disconnect = () => console.log("Disconnecting from database");
+  const [users, setUsers] = useState<User[]>([]);
+  //   const connect = () => console.log("Connecting to database");
+  //   const disconnect = () => console.log("Disconnecting from database");
+  //   useEffect(() => {
+  //     connect();
+  //     return () => disconnect();
+  //   });
 
   useEffect(() => {
-    connect();
-    return () => disconnect();
-  });
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      setUsers(res.data);
+    });
+  }, []);
+
+  return (
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
 };
 
 export default ProductList;
