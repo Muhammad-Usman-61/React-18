@@ -216,7 +216,8 @@ function App() {
         <option value="Catagory1">Catagory 1</option>
         <option value="Catagory2">Catagory 2</option>
       </select>
-      <ProductList catagory={catagory} />
+      {/* <ProductList catagory={catagory} /> */}
+      <ProductList />
     </div>
   );
 }
