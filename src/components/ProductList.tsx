@@ -22,7 +22,7 @@ const ProductList = () => {
   //     connect();
   //     return () => disconnect();
   //   });
-
+  const [error, setError] = useState("");
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/husers")
