@@ -29,15 +29,18 @@ const ProductList = () => {
       .then((res) => {
         setUsers(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err.message));
   }, []);
 
   return (
-    <ul>
-      {users.map((user) => (
-        <li key={user.id}>{user.name}</li>
-      ))}
-    </ul>
+    <>
+      {error && <p className="text-red-600">{error}</p>}
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 
