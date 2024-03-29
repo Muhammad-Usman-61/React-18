@@ -25,7 +25,7 @@ const ProductList = () => {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/users")
+      .get("https://jsonplaceholder.typicode.com/husers")
       .then((res) => {
         setUsers(res.data);
       })
