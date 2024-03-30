@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
+// import axios, { AxiosError } from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
 
 // const ProductList = ({ catagory }: { catagory: string }) => {
@@ -32,7 +33,10 @@ const ProductList = () => {
         setUsers(res.data);
         setLoading(false);
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
     // const fetchUsers = async () => {
     //   try {
     //     const res = await axios.get<User[]>(
