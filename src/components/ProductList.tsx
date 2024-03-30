@@ -14,7 +14,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 // };
 interface User {
   id: number;
-  name: string;
+  //name: string;
+  url: string;
 }
 const ProductList = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -28,7 +29,7 @@ const ProductList = () => {
   const [error, setError] = useState("");
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/users")
+      .get("https://jsonplaceholder.typicode.com/photos")
       .then((res) => {
         setUsers(res.data);
         setLoading(false);
@@ -63,7 +64,13 @@ const ProductList = () => {
       ) : (
         <ul>
           {users.map((user) => (
-            <li key={user.id}>{user.name}</li>
+            //  <li key={user.id}>{user.name}</li>
+            <img
+              key={user.id}
+              src={user.url}
+              alt="user"
+              className="w-20 h-20"
+            />
           ))}
         </ul>
       )}
