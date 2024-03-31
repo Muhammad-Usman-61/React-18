@@ -65,15 +65,15 @@ const ProductList = () => {
   return (
     <>
       {error && <p className="text-red-600">{error}</p>}
-      {loading &&
+      {loading && (
         <ClipLoader
           color="blue"
           size={150}
           aria-label="Loading Spinner"
           data-testid="loader"
         />
-       }
-        {/* <ul>
+      )}
+      {/* <ul>
            {users.map((user) => (
              <li key={user.id}>{user.name}</li>
              <img
@@ -83,13 +83,12 @@ const ProductList = () => {
               className="w-20 h-20"
             />
            ))}
-         </ul>
-        <ul> */}
-          {users.map((user) => (
-            <li key={user.id}>{user.name}</li>
-          ))}
-        </ul>
-      
+           </ul> */}
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
     </>
   );
 };
