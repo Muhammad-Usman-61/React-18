@@ -61,6 +61,17 @@ const ProductList = () => {
     // };
     // fetchUsers();
   }, []);
+  const deleteUser = (user: User) => {
+    const originalUsers = [...users];
+    setUsers(users.filter((u) => u.id !== user.id));
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/busers/${user.id}`)
+
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
+  };
 
   return (
     <>
@@ -91,7 +102,10 @@ const ProductList = () => {
             className="flex justify-between items-center border-b border-gray-600 p-2 last:border-b-0"
           >
             <li>{user.name}</li>
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            <button
+              onClick={() => deleteUser(user)}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            >
               Delete
             </button>
           </div>
