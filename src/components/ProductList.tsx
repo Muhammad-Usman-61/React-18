@@ -73,6 +73,28 @@ const ProductList = () => {
       });
   };
 
+  const addUser = () => {
+    const name = prompt("Enter the name of the user");
+    const originalUsers = [...users];
+    // const newUser = {
+    //   id: 0,
+    //   name: "Usman",
+    // };
+
+    const newUser = {
+      id: users.length + 1,
+      name: name || "",
+    };
+    setUsers([newUser, ...users]);
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/users", newUser)
+      .then(({ data: newUser }) => setUsers([newUser, ...users]))
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
+  };
   return (
     <>
       {error && <p className="text-red-600">{error}</p>}
@@ -95,6 +117,12 @@ const ProductList = () => {
             />
            ))}
            </ul> */}
+      <button
+        onClick={addUser}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
+      >
+        Add User
+      </button>
       <ul className="border border-gray-600 rounded-lg">
         {users.map((user) => (
           <div
