@@ -84,9 +84,17 @@ const ProductList = () => {
             />
            ))}
            </ul> */}
-      <ul>
+      <ul className="border border-gray-600 rounded-lg">
         {users.map((user) => (
-          <li key={user.id}>{user.name}</li>
+          <div
+            key={user.id}
+            className="flex justify-between items-center border-b border-gray-600 p-2 last:border-b-0"
+          >
+            <li>{user.name}</li>
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              Delete
+            </button>
+          </div>
         ))}
       </ul>
     </>
