@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { CanceledError } from "axios";
 // import axios, { AxiosError } from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -14,8 +14,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 // };
 interface User {
   id: number;
-  //name: string;
-  url: string;
+  name: string;
+  //url: string;
 }
 const ProductList = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -28,16 +28,23 @@ const ProductList = () => {
   //   });
   const [error, setError] = useState("");
   useEffect(() => {
+    const controller = new AbortController();
     axios
-      .get("https://jsonplaceholder.typicode.com/photos")
+      //.get("https://jsonplaceholder.typicode.com/photos")
+      .get<User[]>("https://jsonplaceholder.typicode.com/users", {
+        signal: controller.signal,
+      })
       .then((res) => {
         setUsers(res.data);
         setLoading(false);
       })
       .catch((err) => {
+        if (err instanceof CanceledError) return;
         setError(err.message);
         setLoading(false);
       });
+
+    return () => controller.abort();
     // const fetchUsers = async () => {
     //   try {
     //     const res = await axios.get<User[]>(
@@ -62,15 +69,20 @@ const ProductList = () => {
           data-testid="loader"
         />
       ) : (
+        // <ul>
+        //   {users.map((user) => (
+        //     //  <li key={user.id}>{user.name}</li>
+        //     <img
+        //       key={user.id}
+        //       src={user.url}
+        //       alt="user"
+        //       className="w-20 h-20"
+        //     />
+        //   ))}
+        // </ul>
         <ul>
           {users.map((user) => (
-            //  <li key={user.id}>{user.name}</li>
-            <img
-              key={user.id}
-              src={user.url}
-              alt="user"
-              className="w-20 h-20"
-            />
+            <li key={user.id}>{user.name}</li>
           ))}
         </ul>
       )}
