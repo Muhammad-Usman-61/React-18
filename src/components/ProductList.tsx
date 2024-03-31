@@ -19,7 +19,7 @@ interface User {
 }
 const ProductList = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   //   const connect = () => console.log("Connecting to database");
   //   const disconnect = () => console.log("Disconnecting from database");
   //   useEffect(() => {
@@ -29,6 +29,7 @@ const ProductList = () => {
   const [error, setError] = useState("");
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true);
     axios
       //.get("https://jsonplaceholder.typicode.com/photos")
       .get<User[]>("https://jsonplaceholder.typicode.com/users", {
@@ -43,6 +44,9 @@ const ProductList = () => {
         setError(err.message);
         setLoading(false);
       });
+    // .finally(() => {
+    //   setLoading(false);
+    // });
 
     return () => controller.abort();
     // const fetchUsers = async () => {
@@ -61,31 +65,31 @@ const ProductList = () => {
   return (
     <>
       {error && <p className="text-red-600">{error}</p>}
-      {loading ? (
+      {loading &&
         <ClipLoader
           color="blue"
           size={150}
           aria-label="Loading Spinner"
           data-testid="loader"
         />
-      ) : (
-        // <ul>
-        //   {users.map((user) => (
-        //     //  <li key={user.id}>{user.name}</li>
-        //     <img
-        //       key={user.id}
-        //       src={user.url}
-        //       alt="user"
-        //       className="w-20 h-20"
-        //     />
-        //   ))}
-        // </ul>
-        <ul>
+       }
+        {/* <ul>
+           {users.map((user) => (
+             <li key={user.id}>{user.name}</li>
+             <img
+             key={user.id}
+               src={user.url}
+              alt="user"
+              className="w-20 h-20"
+            />
+           ))}
+         </ul>
+        <ul> */}
           {users.map((user) => (
             <li key={user.id}>{user.name}</li>
           ))}
         </ul>
-      )}
+      
     </>
   );
 };
