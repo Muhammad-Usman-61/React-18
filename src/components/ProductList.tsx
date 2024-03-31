@@ -65,7 +65,7 @@ const ProductList = () => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
     axios
-      .delete(`https://jsonplaceholder.typicode.com/busers/${user.id}`)
+      .delete(`https://jsonplaceholder.typicode.com/users/${user.id}`)
 
       .catch((err) => {
         setError(err.message);
