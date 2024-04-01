@@ -86,6 +86,14 @@ const ProductList = () => {
       name: name || "",
     };
     setUsers([newUser, ...users]);
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/users", newUser)
+      .then(({ data: newUser }) => setUsers([newUser, ...users]))
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
   };
 
   const updateUser = (user: User) => {
