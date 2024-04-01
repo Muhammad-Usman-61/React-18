@@ -103,8 +103,17 @@ const ProductList = () => {
       u.id === user.id ? { ...u, name: name || u.name } : u
     );
     setUsers(updatedUsers);
+    // axios
+    //   .put(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
+    //     ...user,
+    //     name: name,
+    //   })
+    //   .catch((err) => {
+    //     setError(err.message);
+    //     setUsers(originalUsers);
+    //   });
     axios
-      .put(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
+      .patch(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
         ...user,
         name: name,
       })
