@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import axios, { CanceledError } from "axios";
+
 // import axios, { AxiosError } from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
+import apiClient, { CanceledError } from "../services/api-client";
 
 // const ProductList = ({ catagory }: { catagory: string }) => {
 //   const [products, setProducts] = useState<string[]>([]);
