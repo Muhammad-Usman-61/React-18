@@ -31,9 +31,9 @@ const ProductList = () => {
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
-    axios
+    apiClient
       //.get("https://jsonplaceholder.typicode.com/photos")
-      .get<User[]>("https://jsonplaceholder.typicode.com/users", {
+      .get<User[]>("/users", {
         signal: controller.signal,
       })
       .then((res) => {
@@ -65,8 +65,8 @@ const ProductList = () => {
   const deleteUser = (user: User) => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
-    axios
-      .delete(`https://jsonplaceholder.typicode.com/users/${user.id}`)
+    apiClient
+      .delete(`/users/${user.id}`)
 
       .catch((err) => {
         setError(err.message);
@@ -81,20 +81,21 @@ const ProductList = () => {
     //   id: 0,
     //   name: "Usman",
     // };
+    if (name !== "") {
+      const newUser = {
+        id: users.length + 1,
+        name: name || "",
+      };
+      setUsers([newUser, ...users]);
 
-    const newUser = {
-      id: users.length + 1,
-      name: name || "",
-    };
-    setUsers([newUser, ...users]);
-
-    axios
-      .post("https://jsonplaceholder.typicode.com/users", newUser)
-      .then(({ data: newUser }) => setUsers([newUser, ...users]))
-      .catch((err) => {
-        setError(err.message);
-        setUsers(originalUsers);
-      });
+      apiClient
+        .post("/users", newUser)
+        .then(({ data: newUser }) => setUsers([newUser, ...users]))
+        .catch((err) => {
+          setError(err.message);
+          setUsers(originalUsers);
+        });
+    }
   };
 
   const updateUser = (user: User) => {
@@ -113,8 +114,8 @@ const ProductList = () => {
     //     setError(err.message);
     //     setUsers(originalUsers);
     //   });
-    axios
-      .patch(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
+    apiClient
+      .patch(`/users/${user.id}`, {
         ...user,
         name: name,
       })
