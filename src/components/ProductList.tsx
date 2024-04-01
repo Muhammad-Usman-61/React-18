@@ -86,10 +86,20 @@ const ProductList = () => {
       name: name || "",
     };
     setUsers([newUser, ...users]);
+  };
 
+  const updateUser = (user: User) => {
+    const name = prompt("Enter the new name of the user", user.name);
+    const originalUsers = [...users];
+    const updatedUsers = users.map((u) =>
+      u.id === user.id ? { ...u, name: name || u.name } : u
+    );
+    setUsers(updatedUsers);
     axios
-      .post("https://jsonplaceholder.typicode.com/users", newUser)
-      .then(({ data: newUser }) => setUsers([newUser, ...users]))
+      .put(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
+        ...user,
+        name: name,
+      })
       .catch((err) => {
         setError(err.message);
         setUsers(originalUsers);
@@ -130,12 +140,21 @@ const ProductList = () => {
             className="flex justify-between items-center border-b border-gray-600 p-2 last:border-b-0"
           >
             <li>{user.name}</li>
-            <button
-              onClick={() => deleteUser(user)}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Delete
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={() => updateUser(user)}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Update
+              </button>
+
+              <button
+                onClick={() => deleteUser(user)}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ))}
       </ul>
