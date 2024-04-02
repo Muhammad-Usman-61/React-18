@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import apiClient, { CanceledError } from "../services/api-client";
 import UserService, { User } from "../services/user-services";
+import userServices from "../services/user-services";
 
 // const ProductList = ({ catagory }: { catagory: string }) => {
 //   const [products, setProducts] = useState<string[]>([]);
@@ -82,8 +83,8 @@ const ProductList = () => {
       };
       setUsers([newUser, ...users]);
 
-      apiClient
-        .post("/users", newUser)
+      userServices
+        .addUser(newUser)
         .then(({ data: newUser }) => setUsers([newUser, ...users]))
         .catch((err) => {
           setError(err.message);

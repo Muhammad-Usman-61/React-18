@@ -16,6 +16,9 @@ class UserService {
   deleteUser(id: number) {
     return apiClient.delete(`/users/${id}`);
   }
+  addUser(user: User) {
+    return apiClient.post("/users", user);
+  }
 }
 
 export default new UserService();
