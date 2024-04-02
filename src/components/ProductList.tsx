@@ -62,13 +62,10 @@ const ProductList = () => {
   const deleteUser = (user: User) => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
-    apiClient
-      .delete(`/users/${user.id}`)
-
-      .catch((err) => {
-        setError(err.message);
-        setUsers(originalUsers);
-      });
+    UserService.deleteUser(user.id).catch((err) => {
+      setError(err.message);
+      setUsers(originalUsers);
+    });
   };
 
   const addUser = () => {
