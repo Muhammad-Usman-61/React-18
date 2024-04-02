@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 // import axios, { AxiosError } from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
-import apiClient, { CanceledError } from "../services/api-client";
+import { CanceledError } from "../services/api-client";
 import UserService, { User } from "../services/user-services";
 import userServices from "../services/user-services";
 
@@ -63,6 +63,7 @@ const ProductList = () => {
   const deleteUser = (user: User) => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
+
     UserService.deleteUser(user.id).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
@@ -109,15 +110,10 @@ const ProductList = () => {
     //     setError(err.message);
     //     setUsers(originalUsers);
     //   });
-    apiClient
-      .patch(`/users/${user.id}`, {
-        ...user,
-        name: name,
-      })
-      .catch((err) => {
-        setError(err.message);
-        setUsers(originalUsers);
-      });
+    userServices.updateUser(user).catch((err) => {
+      setError(err.message);
+      setUsers(originalUsers);
+    });
   };
   return (
     <>
