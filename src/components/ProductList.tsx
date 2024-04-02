@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 // import axios, { AxiosError } from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
 import apiClient, { CanceledError } from "../services/api-client";
+import UserService, { User } from "../services/user-services";
 
 // const ProductList = ({ catagory }: { catagory: string }) => {
 //   const [products, setProducts] = useState<string[]>([]);
@@ -13,11 +14,11 @@ import apiClient, { CanceledError } from "../services/api-client";
 //   }, [catagory]);
 //   return <div>ProductList</div>;
 // };
-interface User {
-  id: number;
-  name: string;
-  //url: string;
-}
+// interface User {
+//   id: number;
+//   name: string;
+//   //url: string;
+// }
 const ProductList = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
@@ -29,13 +30,9 @@ const ProductList = () => {
   //   });
   const [error, setError] = useState("");
   useEffect(() => {
-    const controller = new AbortController();
     setLoading(true);
-    apiClient
-      //.get("https://jsonplaceholder.typicode.com/photos")
-      .get<User[]>("/users", {
-        signal: controller.signal,
-      })
+    const { request, cancel } = UserService.getAllUsers();
+    request
       .then((res) => {
         setUsers(res.data);
         setLoading(false);
@@ -49,7 +46,7 @@ const ProductList = () => {
     //   setLoading(false);
     // });
 
-    return () => controller.abort();
+    return () => cancel();
     // const fetchUsers = async () => {
     //   try {
     //     const res = await axios.get<User[]>(
