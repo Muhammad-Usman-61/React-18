@@ -110,10 +110,15 @@ const ProductList = () => {
     //     setError(err.message);
     //     setUsers(originalUsers);
     //   });
-    userServices.updateUser(user).catch((err) => {
-      setError(err.message);
-      setUsers(originalUsers);
-    });
+    userServices
+      .updateUser({
+        ...user,
+        name: name || user.name,
+      })
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
   };
   return (
     <>
