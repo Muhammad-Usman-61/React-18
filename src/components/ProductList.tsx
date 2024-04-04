@@ -32,7 +32,7 @@ const ProductList = () => {
   const [error, setError] = useState("");
   useEffect(() => {
     setLoading(true);
-    const { request, cancel } = UserService.getAllUsers();
+    const { request, cancel } = UserService.getAll<User>();
     request
       .then((res) => {
         setUsers(res.data);
@@ -64,7 +64,7 @@ const ProductList = () => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    UserService.deleteUser(user.id).catch((err) => {
+    UserService.delete(user.id).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
@@ -85,7 +85,7 @@ const ProductList = () => {
       setUsers([newUser, ...users]);
 
       userServices
-        .addUser(newUser)
+        .create(newUser)
         .then(({ data: newUser }) => setUsers([newUser, ...users]))
         .catch((err) => {
           setError(err.message);
@@ -111,7 +111,7 @@ const ProductList = () => {
     //     setUsers(originalUsers);
     //   });
     userServices
-      .updateUser({
+      .update({
         ...user,
         name: name || user.name,
       })
