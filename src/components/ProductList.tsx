@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 // import axios, { AxiosError } from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
-import { CanceledError } from "../services/api-client";
+// import { CanceledError } from "../services/api-client";
 import UserService, { User } from "../services/user-services";
 import userServices from "../services/user-services";
+import useUsers from "../hooks/useUsers";
 
 // const ProductList = ({ catagory }: { catagory: string }) => {
 //   const [products, setProducts] = useState<string[]>([]);
@@ -21,45 +22,7 @@ import userServices from "../services/user-services";
 //   //url: string;
 // }
 const ProductList = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(false);
-  //   const connect = () => console.log("Connecting to database");
-  //   const disconnect = () => console.log("Disconnecting from database");
-  //   useEffect(() => {
-  //     connect();
-  //     return () => disconnect();
-  //   });
-  const [error, setError] = useState("");
-  useEffect(() => {
-    setLoading(true);
-    const { request, cancel } = UserService.getAll<User>();
-    request
-      .then((res) => {
-        setUsers(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setLoading(false);
-      });
-    // .finally(() => {
-    //   setLoading(false);
-    // });
-
-    return () => cancel();
-    // const fetchUsers = async () => {
-    //   try {
-    //     const res = await axios.get<User[]>(
-    //       "https://jsonplaceholder.typicode.com/users"
-    //     );
-    //     setUsers(res.data);
-    //   } catch (err) {
-    //     setError((err as AxiosError).message);
-    //   }
-    // };
-    // fetchUsers();
-  }, []);
+  const { users, loading, error, setUsers, setError } = useUsers();
   const deleteUser = (user: User) => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
