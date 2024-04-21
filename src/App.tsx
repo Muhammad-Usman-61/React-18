@@ -23,6 +23,7 @@
 //import ExpenseForm from "./expense-tracker/components/ExpenseForm";
 //import EffectHook from "./components/EffectHook";
 import ProductList from "./components/ProductList";
+import Testing from "./components/Testing";
 
 function App() {
   //   const [foodItems, setFoodItems] = useState([
@@ -217,7 +218,9 @@ function App() {
         <option value="Catagory2">Catagory 2</option>
       </select>
       <ProductList catagory={catagory} /> */}
-      <ProductList />
+      {/* <ProductList /> */}
+
+      <Testing />
     </div>
   );
 }
