@@ -22,7 +22,7 @@
 //import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
 //import ExpenseForm from "./expense-tracker/components/ExpenseForm";
 //import EffectHook from "./components/EffectHook";
-import ProductList from "./components/ProductList";
+// import ProductList from "./components/ProductList";
 import Testing from "./components/Testing";
 
 function App() {
